@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { usePartyStore } from '@/stores/party';
 import { ref } from 'vue';
+
+const store = usePartyStore()
 
 const name = ref('');
 const level = ref(1);
-const party = ref<{level: number, name: string }[]>([]);
 const error = ref('');
 
 const addMember = () => {
@@ -16,7 +18,7 @@ const addMember = () => {
     error.value = "Must be at least level 1"
     return;
   }
-  party.value.push({ name: name.value, level: level.value });
+  store.add({ name: name.value, level: level.value });
   name.value = '';
   level.value = 1;
 }
@@ -36,8 +38,8 @@ const addMember = () => {
     <input type="button" @click="addMember" value="Add">
   </div>
 
-  <div v-for="member in party">
-    <div class="member"><span>{{ member.name }}</span> {{ member.level }}</div>
+  <div v-for="member, index in store.party">
+    <div class="member"><span>{{ member.name }}</span> {{ member.level }} <input type="button" value="X" @click="store.remove(index)"/></div>
   </div>
 </template>
 
