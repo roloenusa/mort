@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import Encounter from './components/Encounter.vue';
 import Monsters from './components/Monsters.vue';
 import Party from './components/Party.vue';
 </script>
 
 <template>
   <Party />
+  <Encounter />
   <Monsters />
 </template>
 

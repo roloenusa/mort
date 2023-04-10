@@ -14,7 +14,7 @@ const selected = ref<any[]>([]);
 </script>
 
 <template>
-  <div class="" v-for="monster, index in selected">
+  <div class="" v-for="monster, index in store.enemies">
     <Monster :monster="monster" @click="() => store.remove(index)"/>
   </div>
 
