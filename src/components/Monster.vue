@@ -13,6 +13,7 @@ defineProps<{
     wisdom: string;
     charisma: string;
   },
+  difficulty?: string;
 }>();
 
 </script>
@@ -24,6 +25,7 @@ defineProps<{
       <div>{{ monster.type }}</div>
       <div>{{ monster.subtype }}</div>
       <div>{{ monster.alignment }}</div>
+      <div :class="`text-${difficulty}`" class="difficulty" v-if="difficulty">{{ difficulty }}</div>
     </div>
     <div class="stats">
       <div><span class="stats-label">str</span>{{ monster.strength }}</div>
@@ -46,7 +48,7 @@ h3 {
 
 .challenge-rating {
   font-size: 1.3rem;
-  color: rbga(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .category {
@@ -64,5 +66,10 @@ h3 {
 .stats-label {
   text-transform: uppercase;
   font-weight: 700;
+}
+
+.difficulty {
+  font-weight: 700;
+  text-transform: uppercase;
 }
 </style>

@@ -8,10 +8,11 @@ const name = ref('');
 const level = ref(1);
 const error = ref('');
 
+const randomNames = [ 'Tes', 'Joel', 'Melania', 'Godfrey', 'Bolvar', 'John'];
+
 const addMember = () => {
   if (!name.value.length) {
-    error.value = "Must have a name"
-    return;
+    name.value = randomNames[Math.floor(Math.random() * 100) % randomNames.length];
   }
 
   if (level.value <= 0) {
@@ -21,25 +22,28 @@ const addMember = () => {
   store.add({ name: name.value, level: level.value });
   name.value = '';
   level.value = 1;
+  error.value = '';
 }
 </script>
 
 <template>
-  <div class="error" >{{ error }}</div>
+  <h2>Party</h2>
+
   <div class="form">
     <div class="form-item">
-      <label>Name</label>
       <input type="text" v-model="name" placeholder="Member Name" />
     </div>
     <div class="form-item">
-      <label>Level</label>
-      <input type="number" v-model="level" />
+      <input type="number" min="1" max="20" v-model="level" />
     </div>
-    <input type="button" @click="addMember" value="Add">
+    <div class="form-item right">
+      <input type="button" class="button" @click="addMember" value="Add" />
+    </div>
   </div>
+  <div class="error" >{{ error }}</div>
 
-  <div v-for="member, index in store.party">
-    <div class="member"><span>{{ member.name }}</span> {{ member.level }} <input type="button" value="X" @click="store.remove(index)"/></div>
+  <div v-for="member, index in store.party" class="party">
+    <div class="member"><span>{{ member.name }}</span> {{ member.level }} <input type="button" value="Remove" @click="store.remove(index)"/></div>
   </div>
 </template>
 
@@ -47,14 +51,44 @@ const addMember = () => {
 .error {
   color: red;
   font-size: 0.8rem;
+  margin-bottom: 2rem;
 }
+
 .form {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.form div {
-  padding-right: 1rem;
+input {
+  height: 2rem;
+  background-color: #FFF;
+  border: solid #333 1px;
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+input[type=number] {
+  width: 5rem;
+}
+
+input.button {
+  font-weight: 500;
+}
+
+.member {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0px;
+}
+
+.member input {
+  margin-left: auto;
+}
+
+.right {
+  margin-left: auto;
 }
 
 .member span {

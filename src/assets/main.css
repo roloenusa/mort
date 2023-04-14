@@ -1,10 +1,7 @@
 @import './base.css';
 
 #app {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 2rem;
-
+  width: 100%;
   font-weight: normal;
 }
 
@@ -13,6 +10,51 @@ a,
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
   transition: 0.4s;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.text-Trivial {
+  color: grey;
+}
+
+.text-Easy {
+  color: green;
+}
+
+.text-Medium {
+  color: rgb(228, 191, 3);
+}
+
+.text-Hard {
+  color: red;
+}
+
+.text-Deadly {
+  color: black;
+}
+
+.Trivial {
+  background-color: grey;
+}
+
+.Easy {
+  background-color: green;
+}
+
+.Medium {
+  background-color: rgb(228, 191, 3);
+}
+
+.Hard {
+  background-color: red;
+}
+
+.Deadly {
+  background-color: black;
 }
 
 @media (hover: hover) {
@@ -28,6 +70,5 @@ a,
   }
 
   #app {
-    padding: 2rem;
   }
 }
