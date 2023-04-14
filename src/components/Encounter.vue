@@ -100,11 +100,11 @@ h3 {
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 .caption {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -116,12 +116,8 @@ h3 {
 
 .bar {
   width: 100%;
-  /* border: solid rgba(0, 0, 0, 0.2) 1px; */
   height: .1rem;
   position: relative;
-  /* -webkit-box-shadow: 0px 5px 25px -5px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 5px 25px -5px rgba(0,0,0,1);
-  box-shadow: 0px 5px 25px -5px rgba(0,0,0,1); */
 }
 
 .fill {

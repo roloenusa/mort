@@ -7,12 +7,7 @@ defineProps<{
     type: string;
     subtype: string;
     alignment: string;
-    strength: string;
-    dexterity: string;
-    constitution: string;
-    intelligence: string;
-    wisdom: string;
-    charisma: string;
+    armor_class: string;
   },
   difficulty?: string;
 }>();
@@ -27,17 +22,8 @@ defineProps<{
       <span :class="`text-${difficulty}`" class="difficulty" v-if="difficulty">{{ difficulty }}</span>
     </div>
     <div class="category">
-      <div>{{ monster.type }}</div>
-      <div>{{ monster.subtype }}</div>
-      <div>{{ monster.alignment }}</div>
-    </div>
-    <div class="stats">
-      <div><span class="stats-label">str</span>{{ monster.strength }}</div>
-      <div><span class="stats-label">dex</span>{{ monster.dexterity }}</div>
-      <div><span class="stats-label">cons</span>{{ monster.constitution }}</div>
-      <div><span class="stats-label">int</span>{{ monster.intelligence }}</div>
-      <div><span class="stats-label">wis</span>{{ monster.wisdom }}</div>
-      <div><span class="stats-label">cha</span>{{ monster.charisma }}</div>
+      <div>{{ monster.type }} <span v-if="monster.subtype">| {{ monster.subtype }}</span></div>
+      <div style="margin-left: auto">{{ monster.alignment }}</div>
     </div>
   </div>
 </template>
@@ -72,15 +58,13 @@ defineProps<{
   justify-content: space-between;
 }
 
-.stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between
+.armor-class {
+  font-size: 1.3rem;
 }
-
-.stats-label {
+.armor-class span {
+  color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
-  font-weight: 700;
+  margin-left: auto;
 }
 
 .difficulty {

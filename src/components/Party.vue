@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { usePartyStore } from '@/stores/party';
 import { ref } from 'vue';
+import TrashAlt from './icons/TrashAlt.vue';
 
 const store = usePartyStore()
 
@@ -43,7 +44,7 @@ const addMember = () => {
   <div class="error" >{{ error }}</div>
 
   <div v-for="member, index in store.party" class="party">
-    <div class="member"><span>{{ member.name }}</span> {{ member.level }} <input type="button" value="Remove" @click="store.remove(index)"/></div>
+    <div class="member"><span>{{ member.name }}</span> {{ member.level }} <div class="button button-icon" @click="store.remove(index)"><TrashAlt /></div></div>
   </div>
 </template>
 
@@ -83,7 +84,7 @@ input.button {
   padding: 5px 0px;
 }
 
-.member input {
+.button-icon {
   margin-left: auto;
 }
 

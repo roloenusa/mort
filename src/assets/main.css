@@ -87,6 +87,28 @@ h1, h2, h3, h4, h5, h6, p {
   box-shadow: 1px -1px 7px 2px #000000;
 }
 
+.button {
+  border-radius: 5px;
+  border: solid #8f8f8f 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.button-icon:hover {
+  background-color: rgba(71, 148, 235, 0.25);
+}
+
+.button svg {
+  width: 24px;
+  height: 24px;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
