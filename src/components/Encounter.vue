@@ -5,12 +5,12 @@ import { computed } from 'vue';
 const store = useEncounterStore();
 
 const percent = computed(() => {
-  const result =  store.xpThreshold['Deadly'] ? (100 * store.adjustedXp / store.xpThreshold['Deadly']) : 0;
+  const result =  Math.min((store.xpThreshold['Deadly'] ? (100 * store.adjustedXp / store.xpThreshold['Deadly']) : 0), 100);
   return `${result}%`;
 });
 
 const compPercent = (threshold) => {
-  const result =  (100 * threshold / store.xpThreshold['Deadly']);
+  const result =  Math.min((100 * threshold / store.xpThreshold['Deadly']), 100);
   return `${result}%`;
 };
 
@@ -45,10 +45,11 @@ const compPercent = (threshold) => {
   </div>
 
   <div class="bar">
-    <div class="fill" :class="store.difficulty" :style="{width: percent}"></div>
+    <div class="fill" :class="`fill ${store.difficulty} shadowbox-${store.difficulty}`" :style="{width: percent}"></div>
     <div class="spark" :style="{ left: compPercent(store.xpThreshold['Easy'])}">{{ store.xpThreshold['Easy'] }}</div>
     <div class="spark" :style="{ left: compPercent(store.xpThreshold['Medium'])}">{{ store.xpThreshold['Medium'] }}</div>
     <div class="spark" :style="{ left: compPercent(store.xpThreshold['Hard'])}">{{ store.xpThreshold['Hard'] }}</div>
+    <div class="spark" :style="{ left: compPercent(store.xpThreshold['Deadly'])}">{{ store.xpThreshold['Deadly'] }}</div>
   </div>
 </template>
 
@@ -115,20 +116,23 @@ h3 {
 
 .bar {
   width: 100%;
-  border: solid rgba(0, 0, 0, 0.2) 1px;
-  height: .5rem;
+  /* border: solid rgba(0, 0, 0, 0.2) 1px; */
+  height: .1rem;
   position: relative;
+  /* -webkit-box-shadow: 0px 5px 25px -5px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 5px 25px -5px rgba(0,0,0,1);
+  box-shadow: 0px 5px 25px -5px rgba(0,0,0,1); */
 }
 
 .fill {
-  height: 90%;
+  height: 100%;
 }
 
 .spark {
   position: absolute;
   bottom: 4px;
   width: 1px;
-  font-weight: 700;
+  font-weight: 800;
   color: rgba(0, 0, 0, 0.5);
 }
 

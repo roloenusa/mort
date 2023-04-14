@@ -17,18 +17,23 @@ const selected = ref<any[]>([]);
 </script>
 
 <template>
-  <ul class="monsters" v-for="monster in monsters">
-    <li class="monster-table"><Monster :monster="monster" @click="() => store.add(monster)" :difficulty="encounterStore.monsterProjectedDifficulty(monster)" /></li>
+  <h2>Monsters</h2>
+  <ul class="table" v-for="monster in monsters">
+    <li class="cell"><Monster :monster="monster" @click="() => store.add(monster)" :difficulty="encounterStore.monsterProjectedDifficulty(monster)" /></li>
   </ul>
 </template>
 
 <style scoped>
-.monsters {
-  margin: 0;
-  padding: 0;
+.table {
+  margin: 0rem;
+  padding: 0rem;
+
 }
 
-.monster-table {
+.cell {
+  margin-bottom: 1rem;
+  padding: 1rem;
   list-style: none;
+  background-color: #FFF;
 }
 </style>

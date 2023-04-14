@@ -65,6 +65,8 @@ import Party from './components/Party.vue';
 .table {
   grid-area: table;
   padding: 2rem;
+
+  background-color: #f3f1f1;
 }
 
 .enemies {

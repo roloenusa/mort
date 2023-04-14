@@ -17,44 +17,74 @@ h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 1rem;
 }
 
+.Trivial {
+  background-color: grey;
+}
+
+.Easy {
+  background-color: #00c797;
+}
+
+.Medium {
+  background-color: #f5a623;
+}
+
+.Hard {
+  background-color: #d54f4f;
+}
+
+.Deadly {
+  background-color: black;
+}
+
 .text-Trivial {
-  color: grey;
+  color: rgb(128, 128, 128);
 }
 
 .text-Easy {
-  color: green;
+  color: #00c797;
 }
 
 .text-Medium {
-  color: rgb(228, 191, 3);
+  color: #f5a623;
 }
 
 .text-Hard {
-  color: red;
+  color: #d54f4f;
 }
 
 .text-Deadly {
   color: black;
 }
 
-.Trivial {
-  background-color: grey;
+.shadowbox-Trivia {
+  -webkit-box-shadow: 1px -1px 7px 2px rgb(128, 128, 128);
+  -moz-box-shadow: 1px -1px 7px 2px rgb(128, 128, 128);
+  box-shadow: 1px -1px 7px 2px rgb(128, 128, 128);
 }
 
-.Easy {
-  background-color: green;
+.shadowbox-Easy {
+  -webkit-box-shadow: 1px -1px 7px 2px #00c797;
+  -moz-box-shadow: 1px -1px 7px 2px #00c797;
+  box-shadow: 1px -1px 7px 2px #00c797;
 }
 
-.Medium {
-  background-color: rgb(228, 191, 3);
+.shadowbox-Medium {
+  -webkit-box-shadow: 1px -1px 7px 2px #f5a623;
+  -moz-box-shadow: 1px -1px 7px 2px #f5a623;
+  box-shadow: 1px -1px 7px 2px #f5a623;
 }
 
-.Hard {
-  background-color: red;
+.shadowbox-Hard {
+  -webkit-box-shadow: 1px -1px 7px 2px #d54f4f;
+  -moz-box-shadow: 1px -1px 7px 2px #d54f4f;
+  box-shadow: 1px -1px 7px 2px #d54f4f;
 }
 
-.Deadly {
-  background-color: black;
+.shadowbox-Deadly {
+  -webkit-box-shadow: 1px -1px 7px 2px #000000;
+  -moz-box-shadow: 1px -1px 7px 2px #000000;
+  box-shadow: 1px -1px 7px 2px #000000;
 }
 
 @media (hover: hover) {
