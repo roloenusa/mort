@@ -1,6 +1,10 @@
-# mort
+# mort!
 
-This template should help get you started developing with Vue 3 in Vite.
+Mort is a simple encounter builder for DnD 5e designed on Vue.
+
+The project currently has all the SRD monsters, and calculates the difficulty, as well as the XP for a given encounter to make planning much easier. 
+
+> This project was built mostly as learning experience with the Vue + Vite development frameworks.
 
 ## Recommended IDE Setup
 
