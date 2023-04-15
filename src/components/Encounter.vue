@@ -118,7 +118,7 @@ h3 {
 
 .bar {
   width: 100%;
-  height: .1rem;
+  height: .2rem;
   position: relative;
   transition: opacity 1s;
 }

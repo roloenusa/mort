@@ -16,13 +16,12 @@ const addMember = () => {
     name.value = randomNames[Math.floor(Math.random() * 100) % randomNames.length];
   }
 
-  if (level.value <= 0) {
-    error.value = "Must be at least level 1"
+  if (level.value <= 0 || level.value > 20) {
+    error.value = "Must be between 1 and 20"
     return;
   }
   store.add({ name: name.value, level: level.value });
   name.value = '';
-  level.value = 1;
   error.value = '';
 }
 </script>
@@ -32,19 +31,24 @@ const addMember = () => {
 
   <div class="form">
     <div class="form-item">
-      <input type="text" v-model="name" placeholder="Member Name" />
+      <input type="text" class="field" v-model="name" placeholder="Member Name" />
     </div>
     <div class="form-item">
-      <input type="number" min="1" max="20" v-model="level" />
+      <input type="number" class="field" min="1" max="20" v-model="level" />
     </div>
     <div class="form-item right">
-      <input type="button" class="button" @click="addMember" value="Add" />
+      <div class="button" @click="addMember">Add</div>
     </div>
   </div>
+
   <div class="error" >{{ error }}</div>
 
   <div v-for="member, index in store.party" class="party">
-    <div class="member"><span>{{ member.name }}</span> {{ member.level }} <div class="button button-icon" @click="store.remove(index)"><TrashAlt /></div></div>
+    <div class="member">
+      <div>{{ member.name }}</div>
+      <div>{{ member.level }}</div>
+      <div class="button button-icon" @click="store.remove(index)"><TrashAlt /></div>
+    </div>
   </div>
 </template>
 
@@ -61,27 +65,20 @@ const addMember = () => {
   justify-content: space-between;
 }
 
-input {
-  height: 2rem;
-  background-color: #FFF;
-  border: solid #333 1px;
-  border-radius: 5px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 input[type=number] {
-  width: 5rem;
-}
-
-input.button {
-  font-weight: 500;
+  max-width: 5rem;
 }
 
 .member {
   display: flex;
   flex-direction: row;
   padding: 5px 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.member div {
+  flex: 1 1 0;
 }
 
 .button-icon {
