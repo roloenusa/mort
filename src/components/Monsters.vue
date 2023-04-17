@@ -18,7 +18,10 @@ const encounterStore = useEncounterStore();
 const filters = ref<any[]>([]);
 
 const filter = () => {
+  // Empty the array in case the filters have been removed
   filters.value.splice(0, filters.value.length);
+
+  // Split the parts by a space between and trim any white spaces.
   const parts = search.value
     .trim()
     .split(' ')
@@ -26,15 +29,27 @@ const filter = () => {
     .map((e) => e.toLowerCase());
 
   parts.forEach((part) => {
+    // Regex:
+    // 1. Term
+    // 2. Symbol such as -, >, :
+    // 3. Value to search for
     const m = part.match(/([a-z].*)(:)(\S*.)/);
     if (!m) {
       return;
     }
 
-    const [ full, term, symbol, value ] = m || [];
+    const [ _full, term, _term, value ] = m || [];
+
     let key = term;
+
+    // Accept cr for challenge rating.
     if (term === 'cr') {
-      key = 'challenge_rating'
+      key = 'challenge_rating';
+    }
+
+    // Accept ac for armor class
+    if (term === 'ac') {
+      key = 'armor_class';
     }
 
     if (term === 'difficulty') {
