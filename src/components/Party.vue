@@ -36,7 +36,7 @@ const addMember = () => {
     <div class="form-item">
       <input type="number" class="field" min="1" max="20" v-model="level" />
     </div>
-    <div class="form-item right">
+    <div class="form-item">
       <div class="button" @click="addMember">Add</div>
     </div>
   </div>
@@ -63,6 +63,10 @@ const addMember = () => {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+input[type=text] {
+  max-width: 8rem;
 }
 
 input[type=number] {
