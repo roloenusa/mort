@@ -37,10 +37,16 @@ const filter = () => {
       key = 'challenge_rating'
     }
 
-    const fun = (entry) => {
-      console.log(`${entry[key]} === ${value}`, entry[key] === value);
-      return entry[key] === value;
-    };
+    if (term === 'difficulty') {
+      const fun = (entry) => {
+        const difficulty = encounterStore.monsterProjectedDifficulty(entry);
+        return difficulty.toLowerCase() === value.toLowerCase();
+      }
+      filters.value.push(fun);
+      return;
+    }
+
+    const fun = (entry) => entry[key] === value;
     filters.value.push(fun);
   });
 
@@ -62,10 +68,9 @@ const filterMonters = computed(() => {
 <template>
   <h2>Monsters</h2>
   <div class=search >
-    <input class="field bar" type="text" v-model="search" placeholder="e.g. CR:1 type:beast" />
+    <input class="field bar" type="text" v-model="search" placeholder="e.g. difficulty:easy CR:1 type:beast" @keyup.enter="filter"/>
     <div class="button button-icon" @click="filter"><SearchSolid /></div>
   </div>
-  <div>{{ search }}</div>
   <ul class="table" v-for="monster in filterMonters">
     <li class="cell"><Monster :monster="monster" @click="() => store.add(monster)" :difficulty="encounterStore.monsterProjectedDifficulty(monster)" /></li>
   </ul>
