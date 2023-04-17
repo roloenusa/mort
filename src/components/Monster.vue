@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 defineProps<{
   monster: {
     name: String,
@@ -15,20 +16,31 @@ defineProps<{
 </script>
 
 <template>
-  <div class="monster">
-    <div class="monster-title">
-      <span class="monster-name">{{ monster.name }} <span class="size">{{ monster.size }}</span></span>
-      <span class="challenge-rating">{{ monster.challenge_rating }}</span>
-      <span :class="`text-${difficulty}`" class="difficulty" v-if="difficulty">{{ difficulty }}</span>
+  <div class="banner">
+    <div class="monster">
+      <div class="monster-title">
+        <span class="monster-name">{{ monster.name }} <span class="size">{{ monster.size }}</span></span>
+        <span class="challenge-rating">{{ monster.challenge_rating }}</span>
+        <span :class="`text-${difficulty}`" class="difficulty" v-if="difficulty">{{ difficulty }}</span>
+      </div>
+      <div class="category">
+        <div>{{ monster.type }} <span v-if="monster.subtype">| {{ monster.subtype }}</span></div>
+        <div style="margin-left: auto">{{ monster.alignment }}</div>
+      </div>
     </div>
-    <div class="category">
-      <div>{{ monster.type }} <span v-if="monster.subtype">| {{ monster.subtype }}</span></div>
-      <div style="margin-left: auto">{{ monster.alignment }}</div>
-    </div>
+
   </div>
 </template>
 
 <style scoped>
+.banner {
+  display: flex;
+  flex-direction: row;
+}
+
+.monster {
+  flex-grow: 1;
+}
 
 .monster-title {
   display: grid;

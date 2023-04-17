@@ -6,6 +6,7 @@ import { ref, computed } from 'vue';
 import { useEnemiesStore } from '@/stores/enemies';
 import { useEncounterStore } from '@/stores/encounter';
 import SearchSolid from './icons/SearchSolid.vue';
+import PlusSolid from './icons/PlusSolid.vue';
 
 const search = ref('');
 
@@ -87,7 +88,14 @@ const filterMonters = computed(() => {
     <div class="button button-icon" @click="filter"><SearchSolid /></div>
   </div>
   <ul class="table" v-for="monster in filterMonters">
-    <li class="cell"><Monster :monster="monster" @click="() => store.add(monster)" :difficulty="encounterStore.monsterProjectedDifficulty(monster)" /></li>
+    <li class="cell">
+      <div>
+        <Monster :monster="monster" :difficulty="encounterStore.monsterProjectedDifficulty(monster)" />
+      </div>
+      <div class="button button-icon left-box" @click="() => store.add(monster)">
+        <PlusSolid />
+      </div>
+    </li>
   </ul>
 </template>
 
@@ -113,5 +121,19 @@ const filterMonters = computed(() => {
   padding: 1rem;
   list-style: none;
   background-color: #FFF;
+  display: flex;
+  flex-direction: row;
+}
+
+.cell div:first-child {
+  flex-grow: 1;
+}
+
+.left-box {
+  margin-left: 1rem;
+  border: none;
+  height: 57px;
+  margin-right: -1rem;
+  align-self: center;
 }
 </style>
