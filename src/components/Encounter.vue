@@ -45,7 +45,7 @@ const compPercent = (threshold) => {
   </div>
 
   <div class="bar" :style="{opacity: store.xpThreshold['Easy'] ? 1 : 0}">
-    <div class="fill" :class="`fill ${store.difficulty} shadowbox-${store.difficulty}`" :style="{width: percent}"></div>
+    <div class="fill" :class="`fill ${store.difficulty}`" :style="{width: percent}"></div>
     <div class="spark" :style="{ left: compPercent(store.xpThreshold['Trivial'])}">0</div>
     <div class="spark" :style="{ left: compPercent(store.xpThreshold['Easy'])}">{{ store.xpThreshold['Easy'] }}</div>
     <div class="spark" :style="{ left: compPercent(store.xpThreshold['Medium'])}">{{ store.xpThreshold['Medium'] }}</div>
@@ -118,7 +118,7 @@ h3 {
 
 .bar {
   width: 100%;
-  height: .2rem;
+  height: .3rem;
   position: relative;
   transition: opacity 1s;
 }
